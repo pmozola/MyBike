@@ -33,6 +33,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'mybikepro'
-          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B62FEEAD67A04A19A90232F62103B913 }}
-          package: ./www
+          package: ./src/mobile/www
