@@ -11,8 +11,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./src/api
+    defaults:
+      env:
+        working-directory: ./src/mobile
 
     steps:
       - uses: actions/checkout@v2
