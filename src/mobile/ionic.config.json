@@ -1,0 +1,7 @@
+{
+  "name": "bike",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
