@@ -3,11 +3,10 @@
 
 name: Build and deploy to Azure
 on:
-  workflow_run:
-    workflows: ["compile test sonar"]
-    branches: [main]
-    types: 
-      - completed
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:

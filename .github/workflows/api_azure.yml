@@ -3,11 +3,10 @@
 
 name: Build and deploy API to Azure
 on:
-  workflow_run:
-    workflows: ["compile test sonar"]
-    branches: [main]
-    types: 
-      - completed
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -25,7 +24,21 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build bike.sln --configuration Release
+
+    - name: Sonar Code Analysis
+      uses: highbyte/sonarscan-dotnet@v2.1.2
+      with:
+        # The key of the SonarQube project
+        sonarProjectKey: pmozola_MyBike
+        # The name of the SonarQube project
+        sonarProjectName: MyBike
+        sonarOrganization: pmozola-github
+        dotnetBuildArguments: ./src/api/bike.sln
+        dotnetTestArguments: ./src/api/bike.sln
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
