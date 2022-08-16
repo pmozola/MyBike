@@ -1,0 +1,58 @@
+name: compile test sonar
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      working-directory: ./src/api
+      run: dotnet restore bike.sln
+    - name: Build
+      working-directory: ./src/api
+      run: dotnet build bike.sln --no-restore
+    - name: Test
+      working-directory: ./src/api
+      run: dotnet test bike.sln --no-build --verbosity normal
+    - name: Code Analysis
+      uses: highbyte/sonarscan-dotnet@v2.1.2
+      with:
+        # The key of the SonarQube project
+        sonarProjectKey: pmozola_MyBike
+        # The name of the SonarQube project
+        sonarProjectName: MyBike
+        sonarOrganization: pmozola-github
+        dotnetBuildArguments: ./src/api/bike.sln
+        dotnetTestArguments: ./src/api/bike.sln
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  mobile:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./src/mobile
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build --if-present
+          npm run test --if-present
