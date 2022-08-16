@@ -1,0 +1,41 @@
+name: API
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      working-directory: ./src/api
+      run: dotnet restore bike.sln
+    - name: Build
+      working-directory: ./src/api
+      run: dotnet build bike.sln --no-restore
+    - name: Test
+      working-directory: ./src/api
+      run: dotnet test bike.sln --no-build --verbosity normal
+    - name: Code Analysis
+      uses: highbyte/sonarscan-dotnet@v2.1.2
+      with:
+        # The key of the SonarQube project
+        sonarProjectKey: pmozola_MyBike
+        # The name of the SonarQube project
+        sonarProjectName: MyBike
+        sonarOrganization: pmozola-github
+        dotnetBuildArguments: ./src/api/bike.sln
+        dotnetTestArguments: ./src/api/bike.sln
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
