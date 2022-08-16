@@ -29,13 +29,15 @@ jobs:
           npm run build --if-present
       
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: |
+          zip release.zip ./* -r
+          dir
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: release.zip
+          path: ./src/mobile/release.zip
 
   deploy:
     runs-on: ubuntu-latest
