@@ -23,22 +23,11 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
-      - name: Build with dotnet
-        run: dotnet build bike.sln --configuration Release
+      - name: dir
+        run: dir
 
-    - name: Sonar Code Analysis
-      uses: highbyte/sonarscan-dotnet@v2.1.2
-      with:
-        # The key of the SonarQube project
-        sonarProjectKey: pmozola_MyBike
-        # The name of the SonarQube project
-        sonarProjectName: MyBike
-        sonarOrganization: pmozola-github
-        dotnetBuildArguments: ./src/api/bike.sln
-        dotnetTestArguments: ./src/api/bike.sln
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
