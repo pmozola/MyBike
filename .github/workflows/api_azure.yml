@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./src/mobile
+        working-directory: ./src/api
 
     steps:
       - uses: actions/checkout@v2
