@@ -1,4 +1,6 @@
-﻿using Bike.Shared.Consts;
+﻿using Bike.Equipment.Domain.Bike;
+using Bike.Shared.Consts;
+using Bike.Shared.Domain;
 using FluentValidation;
 using MediatR;
 
@@ -6,13 +8,26 @@ namespace Bike.Equipment.Application.CommandHandlers.UserBike
 {
     public class CreateBikeCommandHandler : IRequestHandler<CreateBikeCommand, CreateBikeCommandResult>
     {
-        public Task<CreateBikeCommandResult> Handle(CreateBikeCommand request, CancellationToken cancellationToken)
+        private readonly IUserContext userContext;
+        private readonly IBikeRepository bikeRepository;
+
+        public CreateBikeCommandHandler(IUserContext userContext, IBikeRepository bikeRepository)
         {
-            throw new NotImplementedException();
+            this.userContext = userContext;
+            this.bikeRepository = bikeRepository;
+        }
+
+        public async Task<CreateBikeCommandResult> Handle(CreateBikeCommand request, CancellationToken cancellationToken)
+        {
+            var bike = BikeAggregate.CreateNewBike(request.Brand, request.Model, request.PurcharseDate, userContext.GetUserId());
+
+            await bikeRepository.AddAsync(bike, cancellationToken);
+
+            return new CreateBikeCommandResult(bike.Id);
         }
     }
 
-    public record CreateBikeCommand(string Brand, string Model, DateOnly PurcharseDate, string FriendlyName) : IRequest<CreateBikeCommandResult>;
+    public record CreateBikeCommand(string Brand, string Model, DateOnly PurcharseDate, string? FriendlyName) : IRequest<CreateBikeCommandResult>;
 
     public record CreateBikeCommandResult(int Id);
 

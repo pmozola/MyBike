@@ -19,7 +19,18 @@ namespace Bike.API.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post(string brand, string model, DateTime purcharseDate, string friendlyName)
+        public async Task<IActionResult> Post(string brand, string model, DateTime purcharseDate, string? friendlyName)
+        {
+            var result = await this.mediatr.Send(
+                new CreateBikeCommand(brand, model, DateOnly.FromDateTime(purcharseDate), friendlyName));
+
+            return Ok(result.Id);
+        }
+
+        [HttpGet]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> Get(string brand, string model, DateTime purcharseDate, string? friendlyName)
         {
             var result = await this.mediatr.Send(
                 new CreateBikeCommand(brand, model, DateOnly.FromDateTime(purcharseDate), friendlyName));

@@ -1,4 +1,9 @@
+using Bike.API.Infrastructure;
 using Bike.Equipment.Application.IoC;
+using Bike.Infrastructure.ImageStore.Application.IoC;
+using Bike.Infrastructure.PushNotification.Application.IoC;
+using Bike.Infrastructure.Strava.Application.IoC;
+using Bike.Shared.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddBikeEquipmentApplication();
+builder.Services
+    .AddBikeEquipmentApplication()
+    .AddImageStoreApplication()
+    .AddStravaApplication()
+    .AddEmailsApplication()
+    .AddPushNotificationApplication()
+    .AddSingleton<IUserContext, FakeUserContext>();
 
 var app = builder.Build();
 
@@ -17,7 +28,6 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
 
 app.UseHttpsRedirection();
 
