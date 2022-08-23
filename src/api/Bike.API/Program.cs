@@ -1,5 +1,6 @@
 using Bike.API.Infrastructure;
 using Bike.Equipment.Application.IoC;
+using Bike.Equipment.Database.DataSeed;
 using Bike.Infrastructure.ImageStore.Application.IoC;
 using Bike.Infrastructure.PushNotification.Application.IoC;
 using Bike.Infrastructure.Strava.Application.IoC;
@@ -8,7 +9,6 @@ using Bike.Shared.Domain;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -34,5 +34,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Services.SeedEquipmentData();
 
 app.Run();

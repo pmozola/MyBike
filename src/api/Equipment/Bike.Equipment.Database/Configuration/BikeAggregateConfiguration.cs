@@ -13,7 +13,6 @@ namespace Bike.Equipment.Database.Configuration
             builder.Property(x => x.Model).IsRequired();
             builder.HasOne(x => x.Image);
 
-            builder.Navigation(x => x.Brand).AutoInclude();
             builder.Navigation(x => x.Image).AutoInclude();
         }
     }

@@ -37,16 +37,16 @@ namespace Bike.Equipment.Application.CommandHandlers.UserBike
         {
             RuleFor(x => x.Brand)
                 .NotEmpty()
-                .WithMessage("")
+                .WithMessage("Brand must be provided.")
                 .WithErrorCode(ValidationErrorCodes.BikeBrandIsEmpty);
             RuleFor(x => x.Model)
                 .NotEmpty()
                 .MaximumLength(100)
-                .WithMessage("")
+                .WithMessage("Model must be provided.")
                 .WithErrorCode(ValidationErrorCodes.BikeModelIsEmpty);
             RuleFor(x => x.PurcharseDate)
                 .LessThanOrEqualTo(DateOnly.FromDateTime(DateTime.Now))
-                .WithMessage("")
+                .WithMessage("Date must be less or equal today.")
                 .WithErrorCode(ValidationErrorCodes.BikePurchaseDateIsMoreThanToday);
         }
     }

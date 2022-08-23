@@ -29,13 +29,13 @@ namespace Bike.API.Controllers
 
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Get(string brand, string model, DateTime purcharseDate, string? friendlyName)
+        public async Task<IActionResult> Get()
         {
-            var result = await this.mediatr.Send(
-                new CreateBikeCommand(brand, model, DateOnly.FromDateTime(purcharseDate), friendlyName));
+            var result = await this.mediatr.Send(new GetUserBikeCommand());
 
-            return Ok(result.Id);
+            return Ok(result);
         }
     }
 }
