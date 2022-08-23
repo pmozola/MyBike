@@ -1,5 +1,6 @@
 using System.Net;
 using Bike.Equipment.Application.CommandHandlers.UserBike;
+using Bike.Equipment.Application.QueryHandlers.UserBike;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

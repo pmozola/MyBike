@@ -1,6 +1,7 @@
 using Bike.API.Infrastructure;
 using Bike.Equipment.Application.IoC;
 using Bike.Equipment.Database.DataSeed;
+using Bike.Infrastructure.Garmin.Application.BackgroundServices;
 using Bike.Infrastructure.ImageStore.Application.IoC;
 using Bike.Infrastructure.PushNotification.Application.IoC;
 using Bike.Infrastructure.Strava.Application.IoC;
@@ -16,11 +17,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddBikeEquipmentApplication()
+    .AddGarminIntegrationApplication()
     .AddImageStoreApplication()
     .AddStravaApplication()
     .AddEmailsApplication()
     .AddPushNotificationApplication()
     .AddSingleton<IUserContext, FakeUserContext>();
+
+builder.Services.AddHostedService<UpdateBikeTotalDistanceBackgroundService>();
 
 var app = builder.Build();
 
@@ -35,6 +39,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Services.SeedEquipmentData();
+app.Services
+    .SeedEquipmentData()
+    .SeedGarminData();
 
 app.Run();
