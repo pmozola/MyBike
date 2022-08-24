@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using Bike.Equipment.Domain.Bike;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bike.Equipment.Database.Repositories
 {
@@ -20,6 +16,17 @@ namespace Bike.Equipment.Database.Repositories
         public Task AddAsync(BikeAggregate bike, CancellationToken cancellationToken)
         {
             _dbContext.Add(bike);
+
+            return _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public Task<BikeAggregate?> GetAsync(int id, CancellationToken cancellationToken) => _dbContext.Bike
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync(cancellationToken);
+
+        public Task UpdateAsync(BikeAggregate bike, CancellationToken cancellationToken)
+        {
+            _dbContext.Bike.Update(bike);
 
             return _dbContext.SaveChangesAsync(cancellationToken);
         }

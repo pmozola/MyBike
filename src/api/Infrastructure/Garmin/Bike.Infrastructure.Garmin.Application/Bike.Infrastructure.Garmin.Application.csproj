@@ -18,4 +18,8 @@
 		<PackageReference Include="Unofficial.Garmin.Connect" Version="0.3.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Shared\Bike.Shared.Domain.Contracts\Bike.Shared.Domain.Contracts.csproj" />
+	</ItemGroup>
+
 </Project>

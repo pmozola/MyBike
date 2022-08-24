@@ -19,5 +19,6 @@ namespace Bike.Equipment.Database
 
         public DbSet<BikeAggregate> Bike { get; set; }
         public DbSet<BikeImage> BikeImages { get; set; }
+        public DbSet<DistanceMeasure> DistanceMeasures { get; set; }
     }
 }

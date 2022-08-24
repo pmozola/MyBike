@@ -11,9 +11,11 @@ namespace Bike.Equipment.Database.Configuration
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Brand).IsRequired();
             builder.Property(x => x.Model).IsRequired();
+            builder.HasMany(x => x.DistanceMeasures).WithOne();
             builder.HasOne(x => x.Image);
 
             builder.Navigation(x => x.Image).AutoInclude();
+            builder.Navigation(x => x.DistanceMeasures).AutoInclude();
         }
     }
 }

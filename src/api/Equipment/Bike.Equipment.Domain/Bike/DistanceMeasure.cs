@@ -7,7 +7,7 @@ namespace Bike.Equipment.Domain.Bike
     {
         public double Value { get; set; }
         public LengthUnit Unit { get; set; } = LengthUnit.Kilometer;
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
         public bool IsAddedManualy { get; set; } = true;
     }
 }

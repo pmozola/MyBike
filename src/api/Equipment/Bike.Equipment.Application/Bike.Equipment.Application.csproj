@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Bike.Shared.Consts\Bike.Shared.Consts.csproj" />
+    <ProjectReference Include="..\..\Shared\Bike.Shared.Domain.Contracts\Bike.Shared.Domain.Contracts.csproj" />
     <ProjectReference Include="..\Bike.Equipment.Database\Bike.Equipment.Database.csproj" />
   </ItemGroup>
 

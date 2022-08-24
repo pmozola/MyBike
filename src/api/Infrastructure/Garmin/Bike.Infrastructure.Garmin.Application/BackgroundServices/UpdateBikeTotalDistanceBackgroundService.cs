@@ -1,7 +1,8 @@
 ﻿using Bike.Equipment.Database;
-using Bike.Infrastructure.Garmin.Application.Database.Model;
+using Bike.Shared.Domain.Contracts;
 using Garmin.Connect;
 using Garmin.Connect.Auth;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -10,7 +11,7 @@ namespace Bike.Infrastructure.Garmin.Application.BackgroundServices
     public class UpdateBikeTotalDistanceBackgroundService : BackgroundService
     {
         private readonly IServiceProvider serviceProvider;
-        private readonly int TwoHoursInMs = 7200000;
+        private readonly int TwoHoursInMs = 5000;
 
         public UpdateBikeTotalDistanceBackgroundService(IServiceProvider serviceProvider)
         {
@@ -52,7 +53,14 @@ namespace Bike.Infrastructure.Garmin.Application.BackgroundServices
                         }
 
                         //send message to queue
-                        var bikeInformationUpdate = new BikeInformationUpdate(userGarminBike, bikeDetailResponse);
+                        var bikeInformationUpdate = new NewBikeActivitiesIntegrationEvent(
+                            userGarminBike.BikeId,
+                            bikeDetailResponse.TotalDistance,
+                            bikeDetailResponse.TotalActivities,
+                            userGarminBike.TotalDistance,
+                            userGarminBike.TotalActivities);
+
+                        await scope.ServiceProvider.GetRequiredService<IPublisher>().Publish(bikeInformationUpdate, stoppingToken);
 
                         Console.WriteLine($"TotalDistance: {bikeDetailResponse.TotalDistance}, new distance {bikeInformationUpdate.NewDistance} in meters");
                         Console.WriteLine($"TotalActivity: {bikeDetailResponse.TotalActivities}, new activities {bikeInformationUpdate.NewActivities}");
@@ -96,22 +104,6 @@ namespace Bike.Infrastructure.Garmin.Application.BackgroundServices
             Console.WriteLine($"uuid for bike {userGarminBike.BikeFullName} is {bike.Uuid}");
 
             return bike.Uuid;
-        }
-
-        public class BikeInformationUpdate
-        {
-            public BikeInformationUpdate(UserGarminBike bike, GearDetail newData)
-            {
-                TotalDistance = newData.TotalDistance;
-                NewDistance = newData.TotalDistance - bike.TotalDistance;
-                LastUpdateTime = DateTime.Now;
-                NewActivities = newData.TotalActivities - bike.TotalActivities;
-            }
-
-            public int NewActivities { get; init; }
-            public DateTime? LastUpdateTime { get; init; }
-            public double TotalDistance { get; init; }
-            public double NewDistance { get; init; }
         }
     }
 }

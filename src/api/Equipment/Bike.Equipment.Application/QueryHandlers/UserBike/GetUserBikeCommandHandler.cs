@@ -21,7 +21,7 @@ public class GetUserBikeCommandHandler : IRequestHandler<GetUserBikeCommand, Get
     {
         var userBikes = dbContext.Bike
             .Where(x => x.OwnerId == userContext.GetUserId())
-            .Select(x => new GetUserBikeResult(x.Id, x.Model, x.Brand, x.FriendlyName));
+            .Select(x => new GetUserBikeResult(x.Id, x.Model, x.Brand, x.FriendlyName, x.DistanceMeasures.Select(x => x.Value).Sum()));
 
         if (!await userBikes.AnyAsync(cancellationToken)) throw new NotFoundDomainException();
 
@@ -30,4 +30,4 @@ public class GetUserBikeCommandHandler : IRequestHandler<GetUserBikeCommand, Get
 }
 
 public record GetUserBikeCommand() : IRequest<GetUserBikeResult>;
-public record GetUserBikeResult(int Id, string Model, string Brand, string? FriendlyName);
+public record GetUserBikeResult(int Id, string Model, string Brand, string? FriendlyName, double TotalDistance);
