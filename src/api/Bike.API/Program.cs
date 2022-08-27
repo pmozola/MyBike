@@ -9,6 +9,17 @@ using Bike.Shared.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    // this defines a CORS policy called "default"
+    options.AddPolicy("default", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -29,7 +40,7 @@ builder.Services.AddHostedService<UpdateBikeTotalDistanceBackgroundService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseCors("default");
 app.UseSwagger();
 app.UseSwaggerUI();
 

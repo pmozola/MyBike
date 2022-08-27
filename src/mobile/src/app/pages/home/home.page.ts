@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BikeResource, UserBikeApi } from './services/user-bike-api';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  bike: BikeResource;
+  constructor(private userBikeApi: UserBikeApi) { }
 
   ngOnInit() {
+    this.userBikeApi.geBike().subscribe(response => this.bike = response);
   }
 
 }
