@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- loaded -->
+  <ion-card *ngIf="bike">
+    <img
+      src="https://www.canyon.com/dw/image/v2/BCML_PRD/on/demandware.static/-/Sites-canyon-master/default/dwed1fac8f/images/full/full_2022_/2022/full_2022_endurace_cf-7-disc-etap_3085_bk-bk_P5.jpg?sw=874&sfrm=png&q=90&bgcolor=F4F4F4" />
+    <ion-card-header>
+      <ion-card-subtitle>{{bike.model}} {{bike.brand}}</ion-card-subtitle>
+      <ion-card-title>{{bike.friendlyName}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      my bike my bike my bike total Distance: {{bike.totalDistance}}
+    </ion-card-content>
+  </ion-card>
+  <!-- waiting for load -->
+  <ion-card *ngIf="!bike">
+    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+    <ion-card-header>
+      <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

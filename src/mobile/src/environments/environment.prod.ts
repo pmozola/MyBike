@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  bikeApi: 'https://mybikeproapi.azurewebsites.net/'
 };
