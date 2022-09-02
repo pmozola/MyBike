@@ -6,6 +6,8 @@ using Bike.Infrastructure.ImageStore.Application.IoC;
 using Bike.Infrastructure.PushNotification.Application.IoC;
 using Bike.Infrastructure.Strava.Application.IoC;
 using Bike.Shared.Domain;
+using Bike.Wishlist.Application.IoC;
+using Bike.Wishlist.Database.DataSeed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +35,7 @@ builder.Services
     .AddStravaApplication()
     .AddEmailsApplication()
     .AddPushNotificationApplication()
+    .AddWishlistApplication()
     .AddSingleton<IUserContext, FakeUserContext>();
 
 builder.Services.AddHostedService<UpdateBikeTotalDistanceBackgroundService>();
@@ -52,6 +55,7 @@ app.MapControllers();
 
 app.Services
     .SeedEquipmentData()
+    .SeedWishlistData()
     .SeedGarminData();
 
 app.Run();

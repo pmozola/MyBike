@@ -1,4 +1,4 @@
-﻿using Bike.Equipment.Domain.Bike;
+﻿using Bike.Equipment.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,10 +9,14 @@ namespace Bike.Equipment.Database.Configuration
         public void Configure(EntityTypeBuilder<DistanceMeasure> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Value).IsRequired();
+            builder.OwnsOne(x => x.Distance,
+                distance =>
+                {
+                    distance.Property(x => x.Value).IsRequired().HasColumnName("Value");
+                    //TODO ignoreForNow
+                    distance.Ignore(x => x.Unit);
+                });
             builder.Property(x => x.IsAddedManualy).IsRequired().HasDefaultValue(true);
-            //TODO ignoreForNow
-            builder.Ignore(x => x.Unit);
         }
     }
 }

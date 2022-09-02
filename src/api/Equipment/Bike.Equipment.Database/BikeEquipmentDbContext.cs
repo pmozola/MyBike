@@ -1,5 +1,6 @@
 ﻿using Bike.Equipment.Database.Configuration;
 using Bike.Equipment.Domain.Bike;
+using Bike.Equipment.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bike.Equipment.Database

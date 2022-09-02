@@ -41,7 +41,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Garmin", "Garmin", "{A16706
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bike.Infrastructure.Garmin.Application", "Infrastructure\Garmin\Bike.Infrastructure.Garmin.Application\Bike.Infrastructure.Garmin.Application.csproj", "{F0057FEB-4D50-4D4A-AD37-9868CD066F53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bike.Shared.Domain.Contracts", "Shared\Bike.Shared.Domain.Contracts\Bike.Shared.Domain.Contracts.csproj", "{7D385969-D2D4-44FB-B189-312EABCFE3C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bike.Shared.Domain.Contracts", "Shared\Bike.Shared.Domain.Contracts\Bike.Shared.Domain.Contracts.csproj", "{7D385969-D2D4-44FB-B189-312EABCFE3C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wishlist", "Wishlist", "{81202697-CAC5-4FFF-9D7E-C1DDB0A9ECCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bike.Wishlist.Application", "Wishlist\Bike.Wishlist.Application\Bike.Wishlist.Application.csproj", "{2D9E3D28-5818-46D1-938D-356CE538B8CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bike.Wishlist.Database", "Wishlist\Bike.Wishlist.Database\Bike.Wishlist.Database.csproj", "{68DAB4A5-D8A9-421A-94C6-E21755029576}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bike.Wishlist.Domain", "Wishlist\Bike.Wishlist.Domain\Bike.Wishlist.Domain.csproj", "{DB929222-57B9-4F5A-B184-D26743B1BF92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +105,18 @@ Global
 		{7D385969-D2D4-44FB-B189-312EABCFE3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D385969-D2D4-44FB-B189-312EABCFE3C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D385969-D2D4-44FB-B189-312EABCFE3C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D9E3D28-5818-46D1-938D-356CE538B8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D9E3D28-5818-46D1-938D-356CE538B8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D9E3D28-5818-46D1-938D-356CE538B8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D9E3D28-5818-46D1-938D-356CE538B8CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DAB4A5-D8A9-421A-94C6-E21755029576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DAB4A5-D8A9-421A-94C6-E21755029576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DAB4A5-D8A9-421A-94C6-E21755029576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DAB4A5-D8A9-421A-94C6-E21755029576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB929222-57B9-4F5A-B184-D26743B1BF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB929222-57B9-4F5A-B184-D26743B1BF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB929222-57B9-4F5A-B184-D26743B1BF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB929222-57B9-4F5A-B184-D26743B1BF92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +138,9 @@ Global
 		{A167067C-D348-4FE9-8713-33722219373A} = {3452ECC0-C5B2-4396-B036-6982B1148C0C}
 		{F0057FEB-4D50-4D4A-AD37-9868CD066F53} = {A167067C-D348-4FE9-8713-33722219373A}
 		{7D385969-D2D4-44FB-B189-312EABCFE3C1} = {F6B61A1D-34C2-4433-96B3-1A7E125ACC05}
+		{2D9E3D28-5818-46D1-938D-356CE538B8CC} = {81202697-CAC5-4FFF-9D7E-C1DDB0A9ECCE}
+		{68DAB4A5-D8A9-421A-94C6-E21755029576} = {81202697-CAC5-4FFF-9D7E-C1DDB0A9ECCE}
+		{DB929222-57B9-4F5A-B184-D26743B1BF92} = {81202697-CAC5-4FFF-9D7E-C1DDB0A9ECCE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B2F38C9-0E02-41D6-94DE-15ADEECEE02E}

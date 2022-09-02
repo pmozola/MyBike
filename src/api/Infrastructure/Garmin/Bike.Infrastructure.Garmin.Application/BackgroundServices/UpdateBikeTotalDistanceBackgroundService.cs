@@ -11,7 +11,7 @@ namespace Bike.Infrastructure.Garmin.Application.BackgroundServices
     public class UpdateBikeTotalDistanceBackgroundService : BackgroundService
     {
         private readonly IServiceProvider serviceProvider;
-        private readonly int TwoHoursInMs = 7200000;
+        private readonly int TwoHoursInMs = 60000;
 
         public UpdateBikeTotalDistanceBackgroundService(IServiceProvider serviceProvider)
         {

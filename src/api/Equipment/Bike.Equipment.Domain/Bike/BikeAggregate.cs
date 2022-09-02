@@ -1,4 +1,5 @@
-﻿using Bike.Shared.Domain;
+﻿using Bike.Equipment.Domain.Common;
+using Bike.Shared.Domain;
 
 namespace Bike.Equipment.Domain.Bike
 {

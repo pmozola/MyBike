@@ -1,4 +1,5 @@
 ﻿using Bike.Equipment.Domain.Bike;
+using Bike.Equipment.Domain.Common;
 using Bike.Shared.Domain.Contracts;
 using Bike.Shared.Domain.Exceptions;
 using MediatR;
@@ -24,8 +25,11 @@ namespace Bike.Equipment.Application.IntegrationEventHandlers
             {
                 Date = notification.LastUpdateTime,
                 IsAddedManualy = false,
-                Unit = Domain.Shared.LengthUnit.Kilometer,
-                Value = notification.NewDistance / 1000
+                Distance = new Distance
+                {
+                    Unit = Domain.Shared.LengthUnit.Kilometer,
+                    Value = notification.NewDistance / 1000
+                }
             });
 
             await this.bikeRepository.UpdateAsync(bike, cancellationToken);
