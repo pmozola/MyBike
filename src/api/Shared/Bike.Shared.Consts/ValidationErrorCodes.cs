@@ -8,5 +8,6 @@
         public const string WishCategoryIdMustBeProvided = "4";
         public const string UrlMustBeProvided = "5";
         public const string WishNameMustBeProvided = "6";
+        public const string UserCategoryNameMustBeProvided = "7";
     }
 }

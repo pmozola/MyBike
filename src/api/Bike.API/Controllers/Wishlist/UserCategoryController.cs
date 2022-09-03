@@ -4,15 +4,15 @@ using Bike.Wishlist.Application.QueryHandlers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bike.API.Controllers
+namespace Bike.API.Controllers.Wishlist
 {
     [ApiController]
     [Route("[controller]")]
-    public class WishController : ControllerBase
+    public class UserCategoryController : ControllerBase
     {
         private readonly ISender mediatr;
 
-        public WishController(ISender mediatr)
+        public UserCategoryController(ISender mediatr)
         {
             this.mediatr = mediatr;
         }
@@ -20,21 +20,20 @@ namespace Bike.API.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post(string name, string url, int categoryId, string? description)
+        public async Task<IActionResult> Post(string name, int categoryId)
         {
             var result = await this.mediatr.Send(
-                new CreateWishCommand(name, url, categoryId, description));
+                new AddUserCategoryCommand(name, categoryId));
 
             return Ok(result.Id);
         }
 
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Get()
         {
-            var result = await this.mediatr.Send(new GetWishListQuery());
+            var result = await this.mediatr.Send(new GetUserCategoryQuery());
 
             return Ok(result);
         }

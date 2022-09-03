@@ -14,7 +14,9 @@ public class WishlistTestDataSeeder
 
     public void Seed()
     {
-        dBContext.Wish.AddRangeAsync(WishTestData.Get());
+        var userCategories = UserCategoryTestData.Get().ToList();
+        dBContext.UserCategories.AddRange(userCategories);
+        dBContext.Wish.AddRange(WishTestData.Get(userCategories));
 
         dBContext.SaveChanges();
     }

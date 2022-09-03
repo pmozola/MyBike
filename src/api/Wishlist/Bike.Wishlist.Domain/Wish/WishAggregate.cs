@@ -5,7 +5,7 @@ namespace Bike.Wishlist.Domain.Wish
 {
     public class WishAggregate : IAggregate
     {
-        public static WishAggregate CreateWish(int userId, string name, string url, int categoryId, string description = "")
+        public static WishAggregate CreateWish(int userId, string name, string url, int categoryId, UserCategory? userCategory, string description = "")
         {
             if (string.IsNullOrEmpty(url)) throw new ArgumentException($"Passed url : {url} should not be empty.");
             if (string.IsNullOrEmpty(name)) throw new ArgumentException($"Passed name : {url}  should not be empty.");
@@ -20,7 +20,8 @@ namespace Bike.Wishlist.Domain.Wish
                 Name = name,
                 Description = description,
                 Url = url,
-                Category = category
+                Category = category,
+                UserCategory = userCategory
             };
         }
         private WishAggregate()
@@ -32,6 +33,7 @@ namespace Bike.Wishlist.Domain.Wish
         public string Url { get; init; }
 
         public Category Category { get; init; }
+        public UserCategory? UserCategory { get; init; }
         public int UserId { get; private set; }
     }
 }

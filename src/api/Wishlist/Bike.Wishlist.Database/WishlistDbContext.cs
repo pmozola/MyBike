@@ -18,5 +18,6 @@ namespace Bike.Wishlist.Database
         }
 
         public DbSet<WishAggregate> Wish { get; set; }
+        public DbSet<UserCategory> UserCategories { get; set; }
     }
 }

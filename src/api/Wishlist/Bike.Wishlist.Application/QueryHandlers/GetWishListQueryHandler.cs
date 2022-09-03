@@ -20,9 +20,17 @@ public class GetWishListQueryHandler : IRequestHandler<GetWishListQuery, GetWish
     {
         var wishes = await dbContext.Wish
             .Where(x => x.UserId == userContext.GetUserId())
-            .Select(x => new WishResult(x.Id, x.Name, x.Description, x.Url, x.Category.Name))
+            .Select(x => new WishResult(
+                x.Id,
+                x.Name,
+                x.Description,
+                x.Url,
+                x.Category.Name,
+                x.UserCategory == null ? 
+                    null :
+                    new UserCategoryResult(x.UserCategory.Id, x.UserCategory.Name )
+                ))
             .ToListAsync(cancellationToken);
-
 
         return new GetWishListCommandResult(wishes);
     }
@@ -30,4 +38,5 @@ public class GetWishListQueryHandler : IRequestHandler<GetWishListQuery, GetWish
 
 public record GetWishListQuery() : IRequest<GetWishListCommandResult>;
 public record GetWishListCommandResult(IList<WishResult> Wishes) { public int TotalResult => Wishes.Count; };
-public record WishResult(int Id, string Name, string Description, string Url, string CategoryName);
+public record WishResult(int Id, string Name, string Description, string Url, string CategoryName, UserCategoryResult? UserCategoryResult);
+public record UserCategoryResult(int Id, string Name);

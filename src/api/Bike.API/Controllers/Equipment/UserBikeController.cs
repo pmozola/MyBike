@@ -4,7 +4,7 @@ using Bike.Equipment.Application.QueryHandlers.UserBike;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bike.API.Controllers
+namespace Bike.API.Controllers.Equipment
 {
     [ApiController]
     [Route("[controller]")]
@@ -22,7 +22,7 @@ namespace Bike.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Post(string brand, string model, DateTime purcharseDate, string? friendlyName)
         {
-            var result = await this.mediatr.Send(
+            var result = await mediatr.Send(
                 new CreateBikeCommand(brand, model, DateOnly.FromDateTime(purcharseDate), friendlyName));
 
             return Ok(result.Id);
@@ -34,7 +34,7 @@ namespace Bike.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Get()
         {
-            var result = await this.mediatr.Send(new GetUserBikeCommand());
+            var result = await mediatr.Send(new GetUserBikeCommand());
 
             return Ok(result);
         }

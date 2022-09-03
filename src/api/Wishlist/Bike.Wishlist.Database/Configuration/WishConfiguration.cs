@@ -12,6 +12,7 @@ namespace Bike.Wishlist.Database.Configuration
             builder.Property(x => x.Url).IsRequired();
             builder.Property(x => x.Name).IsRequired();
             builder.Property(x => x.Description);
+            builder.HasOne(x => x.UserCategory).WithMany();
         }
     }
 }
