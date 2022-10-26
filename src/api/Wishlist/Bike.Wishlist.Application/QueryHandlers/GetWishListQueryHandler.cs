@@ -25,7 +25,7 @@ public class GetWishListQueryHandler : IRequestHandler<GetWishListQuery, GetWish
                 x.Name,
                 x.Description,
                 x.Url,
-                x.Category.Name,
+                x.Category.ToString(),
                 x.UserCategory == null ? 
                     null :
                     new UserCategoryResult(x.UserCategory.Id, x.UserCategory.Name )

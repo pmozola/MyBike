@@ -10,17 +10,15 @@ namespace Bike.Wishlist.Domain.Wish
             if (string.IsNullOrEmpty(url)) throw new ArgumentException($"Passed url : {url} should not be empty.");
             if (string.IsNullOrEmpty(name)) throw new ArgumentException($"Passed name : {url}  should not be empty.");
             if (!UrlValidator.IsValid(url)) throw new ArgumentException($"Passed url : {url} is not valid.");
-
-            var category = Enumeration.GetAll<Category>().FirstOrDefault(x => x.Id == categoryId);
-            if (category == null) throw new ArgumentException($"CategoryId: {categoryId} is not valid ");
-
+            if (!Enum.IsDefined(typeof(Category), categoryId)) throw new ArgumentException($"CategoryId: {categoryId} is not valid ");
+            
             return new WishAggregate
             {
                 UserId = userId,
                 Name = name,
                 Description = description,
                 Url = url,
-                Category = category,
+                Category = (Category)categoryId,
                 UserCategory = userCategory
             };
         }

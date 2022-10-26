@@ -23,7 +23,7 @@ public class GetUserCategoryQueryHandler : IRequestHandler<GetUserCategoryQuery,
             .Select(x => new GetUserCategoryResult(
                 x.Id,
                 x.Name,
-                x.Category.Id))
+                (int)x.Category))
             .ToListAsync(cancellationToken);
 
         return new GetUserCategoryQueryResult(categories);

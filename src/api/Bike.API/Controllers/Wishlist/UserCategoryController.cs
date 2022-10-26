@@ -20,10 +20,10 @@ namespace Bike.API.Controllers.Wishlist
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post(string name, int categoryId)
+        public async Task<IActionResult> Post(UserCategoryPostRequest request)
         {
             var result = await this.mediatr.Send(
-                new AddUserCategoryCommand(name, categoryId));
+                new AddUserCategoryCommand(request.Name, request.CategoryId));
 
             return Ok(result.Id);
         }
@@ -37,5 +37,10 @@ namespace Bike.API.Controllers.Wishlist
 
             return Ok(result);
         }
+    }
+
+    public class UserCategoryPostRequest {
+        public string Name{ get; set; }
+        public int CategoryId { get; set; }
     }
 }

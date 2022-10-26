@@ -8,7 +8,7 @@ namespace Bike.Wishlist.Database.DataSeed.TestData
         {
             return new List<UserCategory>()
             {
-                UserCategory.Create(16, "Buty", Category.Clothes.Id)
+                UserCategory.Create(16, "Buty", (int)Category.Clothes)
             };
         }
     }

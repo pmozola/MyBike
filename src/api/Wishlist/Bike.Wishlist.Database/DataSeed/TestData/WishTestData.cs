@@ -8,7 +8,7 @@ namespace Bike.Wishlist.Database.DataSeed.TestData
         {
             return new List<WishAggregate>()
             {
-                WishAggregate.CreateWish(16, "Some", "http://abc.pl", Category.Clothes.Id, userCategory: userCategories.FirstOrDefault())
+                WishAggregate.CreateWish(16, "Some", "http://abc.pl", (int)Category.Clothes, userCategory: userCategories.FirstOrDefault())
             };
         }
     }

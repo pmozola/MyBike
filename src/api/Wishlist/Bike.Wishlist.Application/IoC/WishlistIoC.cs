@@ -26,8 +26,8 @@ namespace Bike.Wishlist.Application.IoC
 
             services
                 .AddTransient<WishlistTestDataSeeder>()
-                 .AddTransient<IWishRepository, WishRepository>()
-                 .AddTransient<IUserCategoryRepository, UserCategoryRepository>();
+                .AddTransient<IWishRepository, WishRepository>()
+                .AddTransient<IUserCategoryRepository, UserCategoryRepository>();
 
             return services;
         }

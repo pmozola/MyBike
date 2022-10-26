@@ -10,6 +10,7 @@ namespace Bike.Wishlist.Database.Configuration
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired();
+            builder.Property(x => x.Category).IsRequired();
         }
     }
 }
