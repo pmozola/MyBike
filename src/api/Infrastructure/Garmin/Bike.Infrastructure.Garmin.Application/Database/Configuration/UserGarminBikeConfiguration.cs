@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Bike.Equipment.Database.Configuration
+namespace Bike.Infrastructure.Garmin.Application.Database.Configuration
 {
     public class UserGarminBikeConfiguration : IEntityTypeConfiguration<UserGarminBike>
     {

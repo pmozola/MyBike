@@ -1,6 +1,6 @@
 ﻿using Bike.Infrastructure.Garmin.Application.Database.Model;
 
-namespace Bike.Equipment.Database.DataSeed.TestData
+namespace Bike.Infrastructure.Garmin.Application.Database.DataSeed.TestData
 {
     public class UserGarminBikesTestData
     {

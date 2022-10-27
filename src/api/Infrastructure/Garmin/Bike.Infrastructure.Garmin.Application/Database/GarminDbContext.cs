@@ -1,13 +1,15 @@
-﻿using Bike.Equipment.Database.Configuration;
+﻿using Bike.Infrastructure.Garmin.Application.Database.Configuration;
 using Bike.Infrastructure.Garmin.Application.Database.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bike.Equipment.Database
+namespace Bike.Infrastructure.Garmin.Application.Database
 {
     public class GarminDbContext : DbContext
     {
+#pragma warning disable CS8618
         public GarminDbContext(DbContextOptions<GarminDbContext> options)
-        : base(options)
+#pragma warning restore CS8618
+            : base(options)
         {
         }
 

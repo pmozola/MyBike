@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Bike.Infrastructure.PushNotification.Application.IoC
+namespace Bike.Infrastructure.Emails.Application.IoC
 {
     public static class EmailsIoC
     {

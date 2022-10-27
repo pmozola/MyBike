@@ -22,6 +22,7 @@
     <ProjectReference Include="..\Infrastructure\ImageStore\Bike.Infrastructure.ImageStore.Application\Bike.Infrastructure.ImageStore.Application.csproj" />
     <ProjectReference Include="..\Infrastructure\PushNotification\Bike.Infrastructure.PushNotification.Application\Bike.Infrastructure.PushNotification.Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Strava\Bike.Infrastructure.Strava.Application\Bike.Infrastructure.Strava.Application.csproj" />
+    <ProjectReference Include="..\Wishlist\Bike.Wishlist.Application\Bike.Wishlist.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -21,7 +21,7 @@ public class GetUserBikeCommandHandler : IRequestHandler<GetUserBikeCommand, Get
     {
         var userBikes = dbContext.Bike
             .Where(x => x.OwnerId == userContext.GetUserId())
-            .Select(x => new GetUserBikeResult(x.Id, x.Model, x.Brand, x.FriendlyName, x.DistanceMeasures.Select(x => x.Value).Sum()));
+            .Select(x => new GetUserBikeResult(x.Id, x.Model, x.Brand, x.FriendlyName, x.DistanceMeasures.Select(x => x.Distance.Value).Sum()));
 
         if (!await userBikes.AnyAsync(cancellationToken)) throw new NotFoundDomainException();
 

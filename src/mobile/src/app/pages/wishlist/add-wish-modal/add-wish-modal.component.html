@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Add Wish</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" [formGroup]="wishForm">
+
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input formControlName="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Url</ion-label>
+    <ion-input formControlName="url"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select (ionChange)="onCategoryChange($event)" formControlName="categoryId" interface="action-sheet" placeholder="Select category" cancelText="Cancel Choice">
+        <ion-select-option *ngFor="let category of getCategories()" value={{category.id}}>{{category.name}}</ion-select-option>
+      </ion-select> 
+    </ion-item>
+  </ion-list>
+
+  <ion-item *ngIf="userCategoriesForCategory.length > 0">
+    <ion-label>User Sub Category</ion-label>
+    <ion-select  interface="action-sheet" placeholder="Select user category"
+      cancelText="Cancel Choice" formControlName="userCategoryId">
+      <ion-select-option *ngFor="let userCategory of userCategoriesForCategory" value={{userCategory.id}}>{{userCategory.name}}
+      </ion-select-option>
+      <ion-select-option value="2">second sub user category</ion-select-option>
+      <ion-select-option value="3">third sub user category</ion-select-option>
+    </ion-select>
+
+    <ion-button (click)="addNewUserCategory()">Add <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-item *ngIf="userCategoriesForCategory.length <= 0 && isCategorySelected">
+    <ion-label>No User Sub Categories</ion-label>
+    <ion-button (click)="addNewUserCategory()">Add New<ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea formControlName="description"></ion-textarea>
+  </ion-item>
+</ion-content>
