@@ -19,8 +19,15 @@ namespace Bike.Wishlist.Database.Repositories
             return _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public Task<WishAggregate?> GetAsync(int id, CancellationToken cancellationToken) => _dbContext.Wish
-                .Where(x => x.Id == id)
+        public Task<WishAggregate?> GetAsync(int id, int userId,  CancellationToken cancellationToken) => _dbContext.Wish
+                .Where(x => x.Id == id && x.UserId == userId)
                 .FirstOrDefaultAsync(cancellationToken);
+
+        public Task DeleteAsync(WishAggregate entity, CancellationToken cancellationToken)
+        {
+            _dbContext.Wish.Remove(entity);
+
+            return _dbContext.SaveChangesAsync(cancellationToken);
+        }
     }
 }

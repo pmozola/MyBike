@@ -26,9 +26,7 @@ public class GetWishListQueryHandler : IRequestHandler<GetWishListQuery, GetWish
                 x.Description,
                 x.Url,
                 x.Category.ToString(),
-                x.UserCategory == null ? 
-                    null :
-                    new UserCategoryResult(x.UserCategory.Id, x.UserCategory.Name )
+                x.UserCategory == null ? string.Empty : x.UserCategory.Name
                 ))
             .ToListAsync(cancellationToken);
 
@@ -38,5 +36,4 @@ public class GetWishListQueryHandler : IRequestHandler<GetWishListQuery, GetWish
 
 public record GetWishListQuery() : IRequest<GetWishListCommandResult>;
 public record GetWishListCommandResult(IList<WishResult> Wishes) { public int TotalResult => Wishes.Count; };
-public record WishResult(int Id, string Name, string Description, string Url, string CategoryName, UserCategoryResult? UserCategoryResult);
-public record UserCategoryResult(int Id, string Name);
+public record WishResult(int Id, string Name, string Description, string Url, string CategoryName, string UserCategoryName);

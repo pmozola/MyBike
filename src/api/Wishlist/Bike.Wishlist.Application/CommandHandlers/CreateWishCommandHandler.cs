@@ -22,11 +22,12 @@ namespace Bike.Wishlist.Application.CommandHandlers
             this.userCategoryRepository = userCategoryRepository;
             this.userContext = userContext;
         }
+
         public async Task<CreateWishCommandResult> Handle(CreateWishCommand request, CancellationToken cancellationToken)
         {
             UserCategory? userCategory = null;
             
-            if (request.UserCategoryId.HasValue)
+            if (request.UserCategoryId is > 0)
             {
                 userCategory = await userCategoryRepository.GetAsync(userContext.GetUserId(), request.UserCategoryId.Value, cancellationToken);
                 if (userCategory == null) throw new NotFoundDomainException();
