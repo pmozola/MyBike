@@ -26,7 +26,7 @@ namespace Bike.Wishlist.Application.CommandHandlers
         {
             UserCategory? userCategory = null;
             
-            if (request.UserCategoryId.HasValue)
+            if (request.UserCategoryId is > 0)
             {
                 userCategory = await userCategoryRepository.GetAsync(userContext.GetUserId(), request.UserCategoryId.Value, cancellationToken);
                 if (userCategory == null) throw new NotFoundDomainException();

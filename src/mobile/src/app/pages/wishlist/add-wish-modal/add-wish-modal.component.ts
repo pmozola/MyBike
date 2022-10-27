@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { AddUserCategoryModalComponent } from '../add-user-category-modal/add-user-category-modal.component';
 import { UserCategoryResult, WishUserCategoryApi } from '../services/wish-user-category-api';
+import { AddWishRequest, WishApi } from '../services/wish-user-category-api copy';
 
 @Component({
   selector: 'app-add-wish-modal',
@@ -22,7 +23,7 @@ export class AddWishModalComponent implements OnInit {
     description: [''],
   });
 
-  constructor(private modalCtrl: ModalController, private userCategoryApi: WishUserCategoryApi, private fb: FormBuilder) { }
+  constructor(private modalCtrl: ModalController, private userCategoryApi: WishUserCategoryApi, private wishApi: WishApi, private fb: FormBuilder) { }
   ngOnInit(): void {
     this.userCategoryApi.getUserCategory().subscribe(categoriesResponse => this.userCategories = categoriesResponse.categories)
   }
@@ -32,7 +33,16 @@ export class AddWishModalComponent implements OnInit {
   }
 
   confirm() {
-    return this.modalCtrl.dismiss(this.name, 'confirm');
+    debugger;
+    let requestBody = {
+      name: this.wishForm.controls['name'].value,
+      url: this.wishForm.controls['url'].value,
+      categoryId: +this.wishForm.controls['categoryId'].value,
+      userCategoryId: +this.wishForm.controls['userCategoryId'].value,
+      description: this.wishForm.controls['description'].value,
+    } as AddWishRequest;
+
+    this.wishApi.add(requestBody).subscribe(_ => this.modalCtrl.dismiss());
   }
 
   onCategoryChange(value: any) {

@@ -21,10 +21,10 @@ namespace Bike.API.Controllers.Wishlist
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post(string name, string url, int categoryId, int? userCategoryId, string? description)
+        public async Task<IActionResult> Post(WishRequest request)
         {
             var result = await mediatr.Send(
-                new CreateWishCommand(name, url, categoryId, userCategoryId, description));
+                new CreateWishCommand(request.Name, request.Url, request.CategoryId, request.UserCategoryId, request.Description));
 
             return Ok(result.Id);
         }
@@ -38,6 +38,15 @@ namespace Bike.API.Controllers.Wishlist
             var result = await mediatr.Send(new GetWishListQuery());
 
             return Ok(result);
+        }
+
+        public class WishRequest
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Url { get; set; } = string.Empty;
+            public int CategoryId { get; set; }
+            public int? UserCategoryId { get; set; }
+            public string? Description { get; set; } = string.Empty;
         }
     }
 }
