@@ -1,4 +1,4 @@
-﻿using Bike.Equipment.Application.Beheviours;
+﻿using Bike.Equipment.Application.Behaviour;
 using Bike.Equipment.Application.CommandHandlers.UserBike;
 using Bike.Equipment.Database;
 using Bike.Equipment.Database.DataSeed;

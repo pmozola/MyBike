@@ -13,7 +13,7 @@ namespace Bike.Equipment.Domain.Parts
         public static BikePart BottomBracket = new(6, nameof(BottomBracket));
         public static BikePart AirChamber = new(7, nameof(AirChamber));
         public static BikePart Chain = new(8, nameof(Chain));
-        public static BikePart DiscBreake = new(9, nameof(DiscBreake));
+        public static BikePart DiscBrake = new(9, nameof(DiscBrake));
         public static BikePart Crank = new(10, nameof(Crank));
         public static BikePart Pedal = new(11, nameof(Pedal));
         public static BikePart Fork = new(12, nameof(Fork));

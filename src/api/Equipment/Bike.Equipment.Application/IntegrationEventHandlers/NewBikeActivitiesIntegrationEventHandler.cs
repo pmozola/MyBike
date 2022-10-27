@@ -24,7 +24,7 @@ namespace Bike.Equipment.Application.IntegrationEventHandlers
             bike.DistanceMeasures.Add(new DistanceMeasure
             {
                 Date = notification.LastUpdateTime,
-                IsAddedManualy = false,
+                AddedManually = false,
                 Distance = new Distance
                 {
                     Unit = Domain.Shared.LengthUnit.Kilometer,

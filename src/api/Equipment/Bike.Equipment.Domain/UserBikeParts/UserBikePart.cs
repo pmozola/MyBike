@@ -18,7 +18,7 @@ namespace Bike.Equipment.Domain.UserBikeParts
         public Money? BoughtPrice { get; init; }
         public DateTime FirstUse { get; init; }
         public Expiration? PartExpiration { get; init; }
-        public List<DistanceMeasure> DistanceMeasures { get; init; } = new List<DistanceMeasure>();
+        public List<DistanceMeasure> DistanceMeasures { get; init; } = new();
         public Distance TotalDistance() => new()
         {
             Value = DistanceMeasures.Sum(x => x.Distance.Value),

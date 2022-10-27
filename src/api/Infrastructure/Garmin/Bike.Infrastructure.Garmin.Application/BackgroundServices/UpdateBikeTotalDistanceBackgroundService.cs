@@ -1,4 +1,4 @@
-﻿using Bike.Equipment.Database;
+﻿using Bike.Infrastructure.Garmin.Application.Database;
 using Bike.Shared.Domain.Contracts;
 using Garmin.Connect;
 using Garmin.Connect.Auth;
@@ -25,7 +25,7 @@ namespace Bike.Infrastructure.Garmin.Application.BackgroundServices
                 try
                 {
                     await Task.Delay(TwoHoursInMs, stoppingToken);
-                    Console.WriteLine("Start Retriving gear information...");
+                    Console.WriteLine("Start retrieving gear information...");
                     using IServiceScope scope = serviceProvider.CreateScope();
                     var database = scope.ServiceProvider.GetRequiredService<GarminDbContext>();
 
@@ -71,7 +71,7 @@ namespace Bike.Infrastructure.Garmin.Application.BackgroundServices
                         database.Update(userGarminBike);
                         await database.SaveChangesAsync(stoppingToken);
 
-                        Console.WriteLine($"Finish retriving information for {userGarminBike.BikeFullName} for user {userGarminBike.UserName}");
+                        Console.WriteLine($"Finish retrieving information for {userGarminBike.BikeFullName} for user {userGarminBike.UserName}");
                     }
                 }
                 catch (Exception ex)
@@ -85,7 +85,7 @@ namespace Bike.Infrastructure.Garmin.Application.BackgroundServices
 
         private static async Task<string?> GetBikeUuid(GarminClientExtension client, Database.Model.UserGarminBike userGarminBike)
         {
-            Console.WriteLine($"Retriving bike garmin uuid for user {userGarminBike.UserName} and bike {userGarminBike.BikeFullName}");
+            Console.WriteLine($"Retrieving bike garmin uuid for user {userGarminBike.UserName} and bike {userGarminBike.BikeFullName}");
             var gears = await client.GetUserGears(107113049);
 
             Console.WriteLine("user have:");

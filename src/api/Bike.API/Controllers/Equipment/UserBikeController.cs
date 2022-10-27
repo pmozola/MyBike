@@ -20,10 +20,10 @@ namespace Bike.API.Controllers.Equipment
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post(string brand, string model, DateTime purcharseDate, string? friendlyName)
+        public async Task<IActionResult> Post(string brand, string model, DateTime purchaseDate, string? friendlyName)
         {
             var result = await mediatr.Send(
-                new CreateBikeCommand(brand, model, DateOnly.FromDateTime(purcharseDate), friendlyName));
+                new CreateBikeCommand(brand, model, DateOnly.FromDateTime(purchaseDate), friendlyName));
 
             return Ok(result.Id);
         }

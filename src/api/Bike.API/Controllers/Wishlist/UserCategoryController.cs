@@ -39,8 +39,9 @@ namespace Bike.API.Controllers.Wishlist
         }
     }
 
-    public class UserCategoryPostRequest {
-        public string Name{ get; set; }
+    public class UserCategoryPostRequest
+    {
+        public string Name { get; set; } = string.Empty;
         public int CategoryId { get; set; }
     }
 }

@@ -1,7 +1,10 @@
 using Bike.API.Infrastructure;
 using Bike.Equipment.Application.IoC;
 using Bike.Equipment.Database.DataSeed;
+using Bike.Infrastructure.Emails.Application.IoC;
 using Bike.Infrastructure.Garmin.Application.BackgroundServices;
+using Bike.Infrastructure.Garmin.Application.Database.DataSeed;
+using Bike.Infrastructure.Garmin.Application.IoC;
 using Bike.Infrastructure.ImageStore.Application.IoC;
 using Bike.Infrastructure.PushNotification.Application.IoC;
 using Bike.Infrastructure.Strava.Application.IoC;

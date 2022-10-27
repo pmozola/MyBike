@@ -1,4 +1,4 @@
-﻿using Bike.Wishlist.Application.Beheviours;
+﻿using Bike.Wishlist.Application.Behaviour;
 using Bike.Wishlist.Application.CommandHandlers;
 using Bike.Wishlist.Database;
 using Bike.Wishlist.Database.DataSeed;

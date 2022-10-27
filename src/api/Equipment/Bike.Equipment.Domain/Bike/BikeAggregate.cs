@@ -1,5 +1,6 @@
 ﻿using Bike.Equipment.Domain.Common;
 using Bike.Shared.Domain;
+#pragma warning disable CS8618
 
 namespace Bike.Equipment.Domain.Bike
 {
@@ -22,7 +23,7 @@ namespace Bike.Equipment.Domain.Bike
         public DateOnly PurchaseDate { get; init; }
         public BikeImage? Image { get; private set; }
         public string? FriendlyName { get; private set; }
-        public List<DistanceMeasure> DistanceMeasures { get; set; } = new List<DistanceMeasure>();
+        public List<DistanceMeasure> DistanceMeasures { get; set; } = new();
 
         public void AddImage(string url)
         {

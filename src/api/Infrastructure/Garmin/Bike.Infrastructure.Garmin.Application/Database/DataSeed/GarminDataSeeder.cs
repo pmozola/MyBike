@@ -1,7 +1,7 @@
-﻿using Bike.Equipment.Database.DataSeed.TestData;
+﻿using Bike.Infrastructure.Garmin.Application.Database.DataSeed.TestData;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bike.Equipment.Database.DataSeed
+namespace Bike.Infrastructure.Garmin.Application.Database.DataSeed
 {
     public class GarminTestDataSeeder
     {

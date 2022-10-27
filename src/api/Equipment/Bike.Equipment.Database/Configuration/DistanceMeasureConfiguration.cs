@@ -16,7 +16,7 @@ namespace Bike.Equipment.Database.Configuration
                     //TODO ignoreForNow
                     distance.Ignore(x => x.Unit);
                 });
-            builder.Property(x => x.IsAddedManualy).IsRequired().HasDefaultValue(true);
+            builder.Property(x => x.AddedManually).IsRequired().HasDefaultValue(true);
         }
     }
 }

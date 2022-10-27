@@ -6,8 +6,10 @@ namespace Bike.Wishlist.Database
 {
     public class WishlistDbContext : DbContext
     {
+#pragma warning disable CS8618
         public WishlistDbContext(DbContextOptions<WishlistDbContext> options)
-        : base(options)
+#pragma warning restore CS8618
+            : base(options)
         {
         }
 
