@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { AddUserCategoryModalComponent } from '../add-user-category-modal/add-user-category-modal.component';
 import { UserCategoryResult, WishUserCategoryApi } from '../services/wish-user-category-api';
-import { AddWishRequest, WishApi } from '../services/wish-user-category-api copy';
+import { AddWishRequest, WishApi } from '../services/wish-api';
 
 @Component({
   selector: 'app-add-wish-modal',

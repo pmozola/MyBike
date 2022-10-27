@@ -18,7 +18,6 @@ export class HomePage implements OnInit {
   }
 
   async addWishClick() {
-    console.log('dupa');
     const modal = await this.modalCtrl.create({
       component: AddWishModalComponent,
     });

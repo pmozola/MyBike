@@ -40,6 +40,26 @@ namespace Bike.API.Controllers.Wishlist
             return Ok(result);
         }
 
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(typeof(GetWishQueryResponse), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await mediatr.Send(new GetWishQuery(id));
+
+            return Ok(result);
+        }
+
+        [HttpDelete("{id:int}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await mediatr.Send(new DeleteWishCommand(id));
+
+            return Ok();
+        }
+
         public class WishRequest
         {
             public string Name { get; set; } = string.Empty;

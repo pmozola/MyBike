@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: WishlistPage
+  },
+  {
+    path: 'detail',
+    loadChildren: () => import('./wishlist-detail/wishlist-detail.module').then( m => m.WishlistDetailPageModule)
   }
 ];
 

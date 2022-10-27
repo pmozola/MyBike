@@ -22,6 +22,18 @@ export class WishApi {
 
         return this.http.get<GetWishesResponse>(url);
     }
+
+    getWish(id: number): Observable<WishResponse> {
+        var url = this.bikeApiUrl;
+
+        return this.http.get<WishResponse>(url + id);
+    }
+
+    deleteWish(id: number): Observable<object> {
+        var url = this.bikeApiUrl;
+
+        return this.http.delete(url + id);
+    }
 }
 
 export class AddWishRequest {

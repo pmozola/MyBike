@@ -22,6 +22,7 @@ namespace Bike.Wishlist.Application.CommandHandlers
             this.userCategoryRepository = userCategoryRepository;
             this.userContext = userContext;
         }
+
         public async Task<CreateWishCommandResult> Handle(CreateWishCommand request, CancellationToken cancellationToken)
         {
             UserCategory? userCategory = null;
