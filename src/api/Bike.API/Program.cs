@@ -38,6 +38,7 @@ builder.Services
     .AddStravaApplication()
     .AddEmailsApplication()
     .AddPushNotificationApplication()
+    .AddWishlistApplication()
     .AddSingleton<IUserContext, FakeUserContext>();
 
 builder.Services.AddHostedService<UpdateBikeTotalDistanceBackgroundService>();
@@ -56,7 +57,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Services
-   
+    .SeedEquipmentData()
     .SeedWishlistData()
     .SeedGarminData();
 
