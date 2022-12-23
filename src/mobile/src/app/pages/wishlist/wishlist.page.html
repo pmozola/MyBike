@@ -10,14 +10,13 @@
 <ion-content>
 
   <ion-list>
-
     <ion-item-group *ngFor="let category of categories">
+      
       <ion-item-divider sticky>
         <ion-label>
           {{category}}
         </ion-label>
       </ion-item-divider>
-
 
       <ion-item-sliding *ngFor="let wish of getWishForCategory(category)">
         <ion-item-options side="start">

@@ -1,4 +1,5 @@
 using Bike.API.Infrastructure;
+using Bike.API.Middleware;
 using Bike.Equipment.Application.IoC;
 using Bike.Equipment.Database.DataSeed;
 using Bike.Infrastructure.Emails.Application.IoC;
@@ -53,6 +54,8 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
 
