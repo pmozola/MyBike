@@ -1,0 +1,12 @@
+﻿services:
+  mybike.api:
+    image: mybike.api
+    build:
+      context: .
+      dockerfile: MyBike.API/Dockerfile
+
+  mybike.api-1:
+    image: mybike.api-1
+    build:
+      context: .
+      dockerfile: MyBike.API/Dockerfile
