@@ -5,7 +5,7 @@ using MyBike.Application.Handlers.Queries.Bike.GetUserBike;
 namespace MyBike.API.Controllers;
 
 [ApiController]
-[Route("user/bike")]
+[Route("[controller]")]
 public class UserBikeController(ISender sender) : ControllerBase
 {
     [HttpGet]

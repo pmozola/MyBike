@@ -21,6 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MyBike.Application\MyBike.Application.csproj" />
+      <ProjectReference Include="..\MyBike.Aspire.ServiceDefaults\MyBike.Aspire.ServiceDefaults.csproj" />
       <ProjectReference Include="..\MyBike.DataAccess\MyBike.DataAccess.csproj" />
       <ProjectReference Include="..\MyBike.Domain\MyBike.Domain.csproj" />
     </ItemGroup>

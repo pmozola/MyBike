@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{E2F578CC-23D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBike.API.IntegrationTests", "Tests\MyBike.API.IntegrationTests\MyBike.API.IntegrationTests.csproj", "{484A1A71-B1A9-4E8A-956C-1197ABA3C96A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBike.Aspire.ServiceDefaults", "MyBike.Aspire.ServiceDefaults\MyBike.Aspire.ServiceDefaults.csproj", "{EE690604-43F1-43D0-AE3D-A95BCFF692BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{484A1A71-B1A9-4E8A-956C-1197ABA3C96A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{484A1A71-B1A9-4E8A-956C-1197ABA3C96A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{484A1A71-B1A9-4E8A-956C-1197ABA3C96A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE690604-43F1-43D0-AE3D-A95BCFF692BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE690604-43F1-43D0-AE3D-A95BCFF692BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE690604-43F1-43D0-AE3D-A95BCFF692BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE690604-43F1-43D0-AE3D-A95BCFF692BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6137F507-5486-491E-A2BB-A14B3E5693D9} = {E2F578CC-23D5-41AF-8E2B-DF972BDA778C}

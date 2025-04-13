@@ -1,4 +1,5 @@
 using MyBike.Application.IoC;
+using MyBike.Aspire.ServiceDefaults;
 using Scalar.AspNetCore;
 
 // ReSharper disable ClassNeverInstantiated.Global
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddHealthChecks();
 builder.Services.AddMyBikeApplication();
+builder.AddServiceDefaults();
 
 var app = builder.Build();
 app.MapHealthChecks("/health");

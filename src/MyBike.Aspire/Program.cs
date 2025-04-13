@@ -1,13 +1,15 @@
 using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
-var api = builder.AddProject<MyBike_API>("MyBikeAPI");
+var mybikeapi = builder
+    .AddProject<MyBike_API>("mybikeapi")
+    .WithExternalHttpEndpoints();
 
 var ui = builder
     .AddNpmApp("MyBikeUI", "../MyBike.UI")
-    .WithReference(api)
-    .WaitFor(api)
-    .WithHttpEndpoint(env: "PORT", port: 4201)
+    .WithReference(mybikeapi)
+    .WaitFor(mybikeapi)
+    .WithHttpEndpoint(env: "PORT")
     .WithExternalHttpEndpoints()
     .PublishAsDockerFile();
 
